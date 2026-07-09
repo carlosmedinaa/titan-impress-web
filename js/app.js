@@ -1,6 +1,3 @@
-// js/app.js
-// ===== Lógica de la web. Normalmente no necesitas tocar nada aquí. =====
-
 /* Silueta humana que LLENA todo su viewBox (0..180 de alto),
    así al fijar la altura en px se ve exactamente a esa altura. */
 function siluetaHumana(px){
@@ -12,7 +9,18 @@ function siluetaHumana(px){
 }
 
 function waLink(m){ return "https://wa.me/"+WHATSAPP+"?text="+encodeURIComponent(m); }
-function imgs(f){ const a=[]; for(let i=1;i<=FOTOS_POR_FIGURA;i++) a.push(CARPETA+f.slug+"-"+i+".jpg"); return a; }
+
+/* AQUÍ ESTÁ EL CAMBIO PRINCIPAL: Ahora el bucle for lee 'f.fotos' */
+
+function imgs(f){ 
+  const a=[]; 
+  const totalFotos = f.fotos || 5; 
+  for(let i=1; i<=totalFotos; i++) { 
+    a.push(CARPETA+f.slug+"-"+i+".webp"); 
+  } 
+  return a; 
+}
+
 function bindWa(){ document.querySelectorAll("[data-wa]").forEach(el=>{ el.setAttribute("href",waLink(el.dataset.wa)); el.setAttribute("target","_blank"); el.setAttribute("rel","noopener"); }); }
 
 /* ===== Catálogo ===== */
@@ -118,3 +126,87 @@ document.getElementById("menuToggle").addEventListener("click",()=>document.getE
 
 document.getElementById("year").textContent=new Date().getFullYear();
 bindWa(); router();
+
+/* =========================================
+   SISTEMA DE AMPLIACIÓN DE IMÁGENES (LIGHTBOX)
+   ========================================= */
+
+function abrirAmpliacion(rutaImagen) {
+  const modal = document.getElementById('modalAmpliacion');
+  const imagen = document.getElementById('imagenModal');
+  
+  // Asignamos la ruta de la foto clickeada al visor
+  imagen.src = rutaImagen;
+  // Mostramos la pantalla oscura
+  modal.style.display = 'flex';
+  
+  // Bloqueamos el scroll de la página de fondo para que no se mueva
+  document.body.style.overflow = 'hidden';
+}
+
+function cerrarAmpliacion() {
+  const modal = document.getElementById('modalAmpliacion');
+  
+  // Ocultamos la pantalla oscura
+  modal.style.display = 'none';
+  
+  // Devolvemos el scroll normal a la página
+  document.body.style.overflow = 'auto';
+}
+
+
+/* =========================================
+   LÓGICA PARA NAVEGAR ENTRE IMÁGENES
+   ========================================= */
+
+let imagenesGaleria = []; // Aquí guardaremos las rutas de las fotos de la figura actual
+let indiceImagenActual = 0; // Índice de la foto que se está mostrando
+
+// Esta función se llama cuando haces clic en "Ver completa"
+function abrirAmpliacion(rutaImagen) {
+    const modal = document.getElementById('modalAmpliacion');
+    const imagen = document.getElementById('imagenModal');
+
+    // 1. Buscamos todas las miniaturas de la galería para obtener sus rutas
+    const miniaturas = document.querySelectorAll('.gallery-thumbs img');
+    
+    // 2. Llenamos el array con las rutas de todas las imágenes
+    imagenesGaleria = Array.from(miniaturas).map(img => img.src);
+    
+    // 3. Encontramos el índice de la imagen que acabas de abrir
+    indiceImagenActual = imagenesGaleria.indexOf(rutaImagen);
+
+    // 4. Si por alguna razón no está (ej: es la primera vez y solo cargamos una), la añadimos
+    if (indiceImagenActual === -1) {
+        imagenesGaleria = [rutaImagen];
+        indiceImagenActual = 0;
+    }
+
+    // 5. Asignamos la ruta de la foto clickeada al visor y mostramos el modal
+    imagen.src = rutaImagen;
+    modal.style.display = 'flex';
+
+    // 6. Bloqueamos el scroll de la página de fondo
+    document.body.style.overflow = 'hidden';
+}
+
+function cerrarAmpliacion() {
+    document.getElementById('modalAmpliacion').style.display = 'none';
+    
+    // Devolvemos el scroll normal a la página
+    document.body.style.overflow = 'auto';
+}
+
+// Nueva función para cambiar de imagen con las flechas
+function cambiarImagen(direccion) {
+    // Si no hay más de una imagen, no hacemos nada
+    if (imagenesGaleria.length <= 1) return;
+
+    // Calculamos el nuevo índice de forma circular
+    // Si estamos en la última y damos a "siguiente", volvemos a la primera.
+    // Si estamos en la primera y damos a "anterior", vamos a la última.
+    indiceImagenActual = (indiceImagenActual + direccion + imagenesGaleria.length) % imagenesGaleria.length;
+
+    // Actualizamos la fuente de la imagen en el modal
+    document.getElementById('imagenModal').src = imagenesGaleria[indiceImagenActual];
+}
