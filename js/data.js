@@ -40,6 +40,6 @@ const FIGURAS = [
     desc:"El inicial de fuego más querido a escala 1:1. Una réplica exacta y llena de nostalgia, pintada a mano. Perfecta para darle un toque increíble y retro a cualquier rincón." },
   { slug:"kearney", name:"Kearney", height:100, scale:"100 cm de altura", badge:"Custom", fotos: 5,
     desc:"El mítico matón de Springfield a un metro de altura. Una pieza exclusiva, gamberra y personalizada que amplía la colección amarilla del taller. Ideal para salir de lo convencional." },
-    { slug:"goku-namek", name:"Goku Namek", height:205, scale:"205 cm de altura · Tamaño Real", badge:"XXL", fotos: 5,
+    { slug:"Goku-namek", name:"Goku Namek", height:205, scale:"205 cm de altura · Tamaño Real", badge:"XXL", fotos: 5,
     desc:"El legendario Super Saiyan tras su encarnizada batalla contra Freezer. Versión 'Battle Damaged' a gran escala, con un nivel de pintura, texturas y ropa destrozada que te deja sin palabras." },
   ];
