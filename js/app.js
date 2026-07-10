@@ -190,3 +190,28 @@ function cambiarImagen(direccion) {
     indiceImagenActual = (indiceImagenActual + direccion + imagenesGaleria.length) % imagenesGaleria.length;
     document.getElementById('imagenModal').src = imagenesGaleria[indiceImagenActual];
 }
+
+// COTIZADOR A WHATSAPP
+document.addEventListener('DOMContentLoaded', () => {
+  const btnEnviarCot = document.getElementById('btn-enviar-cot');
+  
+  if(btnEnviarCot) {
+    btnEnviarCot.addEventListener('click', () => {
+      const tipo = document.getElementById('cot-tipo').value;
+      const tamano = document.getElementById('cot-tamano').value;
+      const acabado = document.getElementById('cot-acabado').value;
+      
+      // Texto limpio sin emojis para evitar problemas de codificación (UTF-8)
+      const textoMensaje = `¡Hola Titan Impress! Vengo de la web y quiero pedir presupuesto para un proyecto.\n\n` +
+                           `*Tipo:* Figura ${tipo}\n` +
+                           `*Tamaño:* ${tamano}\n` +
+                           `*Acabado:* ${acabado}\n\n` +
+                           `¿Qué disponibilidad y precio aproximado tendrías?`;
+      
+      const numeroWa = "34678018473";
+      const urlWa = `https://wa.me/${numeroWa}?text=${encodeURIComponent(textoMensaje)}`;
+      
+      window.open(urlWa, '_blank');
+    });
+  }
+});

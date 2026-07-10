@@ -75,8 +75,10 @@
 
 <main id="viewHome">
 
-  <section class="hero halftone">
-    <div class="rays"></div>
+  <section class="hero" id="heroFondo">
+    <!-- Esta capa será la encargada del degradado oscuro y el desenfoque -->
+    <div class="hero-overlay"></div>
+    
     <div class="container hero-content">
       <span class="kick">🐉 Taller de figuras &nbsp;·&nbsp; <b>Málaga</b></span>
       <h1><span class="out">No es un</span> <span class="fill">póster.</span><br>Es tu héroe<br>a tamaño real.</h1>
@@ -146,34 +148,54 @@
       <p>Piezas únicas y a medida luciendo en los setups y estudios de grandes creadores y artistas.</p>
     </div>
     
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 2rem;">
+    <div class="colab-grid">
       
-      <!-- Proyecto Nil Ojeda -->
-      <div style="background: #111; border: 1px solid #333; border-radius: 12px; overflow: hidden; text-align: center; padding-bottom: 1.5rem;">
-        <img src="imagenes/nil-ojeda.webp" alt="Nil Ojeda con figura de Titan Impress" style="width: 100%; height: 250px; object-fit: cover; border-bottom: 1px solid #333;">
-        <h3 style="margin: 1.5rem 0 0.5rem 0; font-size: 1.5rem;">Nil Ojeda</h3>
-        <p style="color: #aaa; margin: 0; font-size: 0.9rem;">Figura "Milfo" a gran escala</p>
+      <!-- Proyecto Nil Ojeda (Clicable a Instagram) -->
+      <!-- IMPORTANTE: Cambia el href por el link real de tu vídeo -->
+      <a href="https://www.instagram.com/p/DVMOm71iJXc/?img_index=1" target="_blank" rel="noopener" class="colab-card clickable">
+        <div class="colab-img-wrapper">
+          <img src="imagenes/nil-ojeda.webp" alt="Nil Ojeda con figura de Titan Impress">
+          <div class="play-badge">▶ Ver proceso</div>
+        </div>
+        <div class="colab-info">
+          <h3>Nil Ojeda</h3>
+          <p>Figura "Milfo" a gran escala</p>
+        </div>
+      </a>
+
+      <!-- Proyecto Eladio Carrión (Clicable a Instagram) -->
+      <!-- IMPORTANTE: Cambia el href por el link real de tu vídeo -->
+      <a href="https://www.instagram.com/p/DT83_LOCKKR/?img_index=1" target="_blank" rel="noopener" class="colab-card clickable">
+        <div class="colab-img-wrapper">
+          <img src="imagenes/eladio.webp" alt="Proyecto 3D para Eladio Carrión" style="object-position: center 15%;">
+          <div class="play-badge">▶ Ver proceso</div>
+        </div>
+        <div class="colab-info">
+          <h3>Eladio Carrión</h3>
+          <p>Diseño exclusivo en 3D</p>
+        </div>
+      </a>
+      
+      <!-- Proyecto Cano (Solo visual, sin link) -->
+      <div class="colab-card">
+        <div class="colab-img-wrapper">
+          <img src="imagenes/cano-estudio.webp" alt="Figura Goku en estudio de grabación">
+        </div>
+        <div class="colab-info">
+          <h3>losdelcontrolsp</h3>
+          <p>Goku a tamaño real en el estudio</p>
+        </div>
       </div>
 
-      <!-- Proyecto Eladio Carrión -->
-      <div style="background: #111; border: 1px solid #333; border-radius: 12px; overflow: hidden; text-align: center; padding-bottom: 1.5rem;">
-        <img src="imagenes/eladio.webp" alt="Proyecto 3D para Eladio Carrión" style="width: 100%; height: 250px; object-fit: cover; object-position: center 15%; border-bottom: 1px solid #333;">
-        <h3 style="margin: 1.5rem 0 0.5rem 0; font-size: 1.5rem;">Eladio Carrión</h3>
-        <p style="color: #aaa; margin: 0; font-size: 0.9rem;">Diseño exclusivo en 3D</p>
-      </div>
-      
-      <!-- Proyecto Cano (Productor) -->
-      <div style="background: #111; border: 1px solid #333; border-radius: 12px; overflow: hidden; text-align: center; padding-bottom: 1.5rem;">
-        <img src="imagenes/cano-estudio.webp" alt="Figura Goku en estudio de grabación" style="width: 100%; height: 250px; object-fit: cover; border-bottom: 1px solid #333;">
-        <h3 style="margin: 1.5rem 0 0.5rem 0; font-size: 1.5rem;">losdelcontrolsp (productor de cano)</h3>
-        <p style="color: #aaa; margin: 0; font-size: 0.9rem;">Goku a tamaño real en el estudio</p>
-      </div>
-
-      <!-- Proyecto disneyprince -->
-      <div style="background: #111; border: 1px solid #333; border-radius: 12px; overflow: hidden; text-align: center; padding-bottom: 1.5rem;">
-        <img src="imagenes/disneyprince.webp" alt="Proyecto 3D para el ilustrador disneyprince" style="width: 100%; height: 250px; object-fit: cover; object-position: center 15%; border-bottom: 1px solid #333;">
-        <h3 style="margin: 1.5rem 0 0.5rem 0; font-size: 1.5rem;">disneyprince</h3>
-        <p style="color: #aaa; margin: 0; font-size: 0.9rem;">Figura personalizada para el ilustrador</p>
+      <!-- Proyecto disneyprince (Solo visual, sin link) -->
+      <div class="colab-card">
+        <div class="colab-img-wrapper">
+          <img src="imagenes/disneyprince.webp" alt="Proyecto 3D para el ilustrador disneyprince" style="object-position: center 15%;">
+        </div>
+        <div class="colab-info">
+          <h3>disneyprince</h3>
+          <p>Figura personalizada para el ilustrador</p>
+        </div>
       </div>
 
     </div>
@@ -183,12 +205,40 @@
   <section class="section" id="contacto">
     <div class="cta-wrap">
       <div class="cta halftone">
-        <h2>¿Cuál te llevas a casa?</h2>
-        <p>Escríbeme por WhatsApp con la figura o el proyecto que tienes en mente y te paso presupuesto, disponibilidad y más fotos al momento.</p>
-        <a class="btn-wa" href="https://wa.me/34678018473?text=¡Hola%20Titan%20Impress!%20Quiero%20encargar%20una%20figura" target="_blank" rel="noopener">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 00-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1012 2zm0 18a8 8 0 01-4.1-1.1l-.3-.2-2.8.7.8-2.7-.2-.3A8 8 0 1112 20z"/></svg>
-          Escribir por WhatsApp
-        </a>
+        <h2>Calcula tu presupuesto</h2>
+        <p>Configura tu proyecto en 3 clics y recibe el presupuesto exacto sin mareos.</p>
+        
+        <div class="form-cotizador">
+          <div class="form-group">
+            <label>1. ¿Qué tipo de figura buscas?</label>
+            <select id="cot-tipo">
+              <option value="de catálogo">De Catálogo (Personajes de Anime)</option>
+              <option value="personalizada">Personalizada (Diseño 3D exclusivo)</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label>2. Elige el tamaño aproximado</label>
+            <select id="cot-tamano">
+              <option value="busto o pequeña">Busto o Menos de 50cm</option>
+              <option value="de 1 metro">Mediana (Aprox. 1 metro)</option>
+              <option value="escala 1:1">Escala 1:1 (Tamaño Real)</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label>3. ¿Qué acabado prefieres?</label>
+            <select id="cot-acabado">
+              <option value="pintada a mano premium">Lista para exponer (Pintada a mano)</option>
+              <option value="en bruto">En bruto (Para lijarla y pintarla yo)</option>
+            </select>
+          </div>
+
+          <button id="btn-enviar-cot" class="btn-wa">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 00-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1012 2zm0 18a8 8 0 01-4.1-1.1l-.3-.2-2.8.7.8-2.7-.2-.3A8 8 0 1112 20z"/></svg>
+            Pedir Precio por WhatsApp
+          </button>
+        </div>
       </div>
     </div>
   </section>

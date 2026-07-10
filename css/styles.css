@@ -176,35 +176,26 @@ header {
   }
 }
 
-/* ---------- HERO ---------- */
-.hero {
+/* ---------- HERO CON FOTO DEL TALLER ---------- */
+.hero, #heroFondo {
   position: relative;
   min-height: 92vh;
   display: flex;
   align-items: center;
   overflow: hidden;
-  background:
-    radial-gradient(
-      circle at 78% 25%,
-      rgba(255, 90, 31, 0.35),
-      transparent 52%
-    ),
-    radial-gradient(
-      circle at 12% 85%,
-      rgba(31, 111, 235, 0.32),
-      transparent 48%
-    ),
-    linear-gradient(160deg, #0b0b0f 0%, #15101d 60%, #0b0b0f 100%);
+  background-image: url('../imagenes/fondo-taller.webp'); 
+  background-size: cover;
+  background-position: right center; 
+  background-repeat: no-repeat;
 }
-.hero .rays {
+.hero-overlay {
   position: absolute;
-  inset: 0;
-  background: repeating-conic-gradient(
-    from 0deg at 78% 30%,
-    rgba(255, 210, 30, 0.05) 0deg 6deg,
-    transparent 6deg 12deg
-  );
-  pointer-events: none;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(17, 17, 17, 0.98) 0%, rgba(17, 17, 17, 0.95) 50%, rgba(17, 17, 17, 0.1) 85%);
+  z-index: 1;
 }
 .hero-content {
   position: relative;
@@ -488,11 +479,18 @@ header {
   gap: 48px;
   align-items: start;
 }
+
+/* =========================================
+   BOTÓN LUPA Y AJUSTE DE IMAGEN PRINCIPAL
+   (Unificado para eliminar clases repetidas)
+   ========================================= */
 .gallery-main {
   position: relative;
-  aspect-ratio: 1/1;
+  cursor: pointer;
   border-radius: 14px;
   overflow: hidden;
+  aspect-ratio: 1 / 1;
+  width: 100%;
   background: #0d0d12;
   box-shadow: var(--sombra);
   margin-bottom: 14px;
@@ -502,7 +500,31 @@ header {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
 }
+.btn-ampliar {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(255, 102, 0, 0.85);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  pointer-events: none; 
+  white-space: nowrap;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+  transition: all 0.3s ease;
+  opacity: 0.9;
+}
+.gallery-main:hover .btn-ampliar {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1.05);
+  background: rgba(255, 102, 0, 1);
+}
+
 .gallery-thumbs {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -751,6 +773,70 @@ header {
   padding: 17px 40px;
 }
 
+/* ---------- COLABORACIONES ---------- */
+.colab-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+.colab-card {
+  background: #111;
+  border: 1px solid #333;
+  border-radius: 12px;
+  overflow: hidden;
+  text-align: center;
+  transition: transform 0.2s, border-color 0.2s;
+  display: flex;
+  flex-direction: column;
+}
+/* Efecto hover solo para las tarjetas que tienen enlace */
+.colab-card.clickable:hover {
+  transform: translateY(-6px);
+  border-color: var(--naranja);
+}
+.colab-img-wrapper {
+  position: relative;
+  width: 100%;
+  height: 250px;
+}
+.colab-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-bottom: 1px solid #333;
+}
+/* El botoncito naranja de Play */
+.play-badge {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: var(--naranja);
+  color: #111;
+  font-family: "Anton", sans-serif;
+  font-size: 0.8rem;
+  padding: 6px 12px;
+  border-radius: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.6);
+}
+.colab-info {
+  padding: 1.5rem 1rem;
+}
+.colab-info h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.5rem;
+}
+.colab-info p {
+  color: #aaa;
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+
+
+
 /* ---------- FOOTER ---------- */
 footer {
   background: #070709;
@@ -830,7 +916,61 @@ footer {
   fill: #fff;
 }
 
-/* ---------- RESPONSIVE ---------- */
+
+/* ---------- COTIZADOR ---------- */
+.form-cotizador {
+  max-width: 500px;
+  margin: 0 auto;
+  background: var(--tinta2);
+  padding: 30px;
+  border-radius: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.08);
+  text-align: left;
+}
+.form-group {
+  margin-bottom: 20px;
+}
+.form-group label {
+  display: block;
+  font-family: "Anton", sans-serif;
+  color: var(--amarillo);
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.form-group select {
+  width: 100%;
+  padding: 14px;
+  background: #0d0d12;
+  color: #fff;
+  border: 1px solid #333;
+  border-radius: 8px;
+  font-family: "Oswald", sans-serif;
+  font-size: 1rem;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.2s;
+  appearance: none; /* Quita la flecha por defecto para que quede más limpio */
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23ff5a1f%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px top 50%;
+  background-size: 12px auto;
+}
+.form-group select:focus {
+  border-color: var(--naranja);
+}
+.form-cotizador .btn-wa {
+  width: 100%;
+  justify-content: center;
+  font-size: 1.15rem;
+  padding: 16px;
+  margin-top: 10px;
+}
+/* =========================================
+   RESPONSIVE (Todo el @media ordenado al final)
+   ========================================= */
+
 @media (max-width: 860px) {
   .detail-grid,
   .taller-grid {
@@ -838,6 +978,16 @@ footer {
     gap: 34px;
   }
 }
+
+@media (max-width: 768px) {
+  .hero, #heroFondo {
+    background-position: center; 
+  }
+  .hero-overlay {
+    background: linear-gradient(to bottom, rgba(17, 17, 17, 0.95) 0%, rgba(17, 17, 17, 0.85) 60%, rgba(17, 17, 17, 0.2) 100%);
+  }
+}
+
 @media (max-width: 720px) {
   .nav-links {
     position: fixed;
@@ -868,49 +1018,4 @@ footer {
   .logo {
     font-size: 1.4rem;
   }
-}
-
-/* =========================================
-   BOTÓN LUPA Y AJUSTE DE IMAGEN PRINCIPAL
-   ========================================= */
-
-.gallery-main {
-  position: relative;
-  cursor: pointer;
-  border-radius: 8px;
-  overflow: hidden;
-  aspect-ratio: 1 / 1;
-  width: 100%;
-}
-
-.gallery-main img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.btn-ampliar {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: rgba(255, 102, 0, 0.85); /* Naranja Titan Impress */
-  color: white;
-  padding: 12px 24px;
-  border-radius: 8px;
-  font-weight: bold;
-  font-size: 1.1rem;
-  pointer-events: none; /* Para que el clic pase a la imagen */
-  white-space: nowrap;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-  transition: all 0.3s ease;
-  opacity: 0.9;
-}
-
-/* Efecto guapo al pasar el ratón por encima de la foto */
-.gallery-main:hover .btn-ampliar {
-  opacity: 1;
-  transform: translate(-50%, -50%) scale(1.05);
-  background: rgba(255, 102, 0, 1);
 }
