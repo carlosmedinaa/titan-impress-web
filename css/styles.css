@@ -967,6 +967,84 @@ footer {
   padding: 16px;
   margin-top: 10px;
 }
+
+
+/* --- ESTILOS DE PREGUNTAS FRECUENTES (FAQ) --- */
+.faq-section {
+    padding: 60px 20px;
+    background-color: #0a0a0a; /* Ajusta según tu color de fondo oscuro */
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+}
+
+.faq-container {
+    max-width: 800px;
+    width: 100%;
+}
+
+.faq-title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: #ff5e00; /* Tu naranja de Titan Impress */
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.faq-subtitle {
+    text-align: center;
+    color: #a0a0a0;
+    margin-bottom: 40px;
+    font-size: 1.1rem;
+}
+
+.faq-item {
+    background-color: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.faq-item[open] {
+    border-color: #ff5e00;
+}
+
+.faq-question {
+    padding: 20px;
+    font-weight: bold;
+    font-size: 1.2rem;
+    cursor: pointer;
+    list-style: none; /* Oculta la flecha fea por defecto del navegador */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Crear nuestro propio icono de "+" y "-" */
+.faq-question::after {
+    content: '+';
+    font-size: 1.5rem;
+    color: #ff5e00;
+    font-weight: normal;
+    transition: transform 0.3s ease;
+}
+
+.faq-item[open] .faq-question::after {
+    content: '-';
+    transform: rotate(180deg);
+}
+
+.faq-answer {
+    padding: 0 20px 20px 20px;
+    color: #d1d1d1;
+    line-height: 1.6;
+    border-top: 1px solid #333;
+    margin-top: 10px;
+    padding-top: 15px;
+}
 /* =========================================
    RESPONSIVE (Todo el @media ordenado al final)
    ========================================= */
