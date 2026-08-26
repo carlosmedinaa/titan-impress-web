@@ -8,8 +8,6 @@ function siluetaHumana(px){
 
 function waLink(m){ return "https://wa.me/"+WHATSAPP+"?text="+encodeURIComponent(m); }
 
-
-
 function imgs(f){ 
   const a=[]; 
   const totalFotos = f.fotos || 5; 
@@ -72,9 +70,11 @@ function showFigura(f){
       <div class="cap fig">${f.name.split(" ")[0]}<b>${(f.height/100).toFixed(2).replace('.',',')} m</b></div>
     </div>`;
 
+  // === AQUÍ ESTÁ EL CAMBIO APLICADO ===
   document.getElementById("dSpecs").innerHTML=[
     ["Personaje",f.name],["Medida",f.scale],["Material",MATERIAL],
-    ["Acabado","Pintado a mano"],["Disponibilidad","Por encargo"],["Envío","Desde Málaga · coordinado por WhatsApp"]
+    ["Acabado", f.acabado || "Pintado a mano"],
+    ["Disponibilidad","Por encargo"],["Envío","Desde Málaga · coordinado por WhatsApp"]
   ].map(s=>`<li><b>${s[0]}</b> ${s[1]}</li>`).join("");
 
   const main=document.getElementById("dMainImg");
@@ -126,44 +126,15 @@ document.getElementById("year").textContent=new Date().getFullYear();
 bindWa(); router();
 
 /* LIGHTBOX */
-
-function abrirAmpliacion(rutaImagen) {
-  const modal = document.getElementById('modalAmpliacion');
-  const imagen = document.getElementById('imagenModal');
-  
- 
-  imagen.src = rutaImagen;
-
-  modal.style.display = 'flex';
-  
-
-  document.body.style.overflow = 'hidden';
-}
-
-function cerrarAmpliacion() {
-  const modal = document.getElementById('modalAmpliacion');
-  
-
-  modal.style.display = 'none';
-  
-
-  document.body.style.overflow = 'auto';
-}
-
-
-/*  LÓGICA PARA NAVEGAR ENTRE IMÁGENES */
-
 let imagenesGaleria = []; 
 let indiceImagenActual = 0; 
 
 function abrirAmpliacion(rutaImagen) {
     const modal = document.getElementById('modalAmpliacion');
     const imagen = document.getElementById('imagenModal');
-
     const miniaturas = document.querySelectorAll('.gallery-thumbs img');
     
     imagenesGaleria = Array.from(miniaturas).map(img => img.src);
-    
     indiceImagenActual = imagenesGaleria.indexOf(rutaImagen);
 
     if (indiceImagenActual === -1) {
@@ -173,20 +144,16 @@ function abrirAmpliacion(rutaImagen) {
 
     imagen.src = rutaImagen;
     modal.style.display = 'flex';
-
     document.body.style.overflow = 'hidden';
 }
 
 function cerrarAmpliacion() {
     document.getElementById('modalAmpliacion').style.display = 'none';
-    
     document.body.style.overflow = 'auto';
 }
 
 function cambiarImagen(direccion) {
     if (imagenesGaleria.length <= 1) return;
-
-  
     indiceImagenActual = (indiceImagenActual + direccion + imagenesGaleria.length) % imagenesGaleria.length;
     document.getElementById('imagenModal').src = imagenesGaleria[indiceImagenActual];
 }
@@ -201,7 +168,6 @@ document.addEventListener('DOMContentLoaded', () => {
       const tamano = document.getElementById('cot-tamano').value;
       const acabado = document.getElementById('cot-acabado').value;
       
-      // Texto limpio sin emojis para evitar problemas de codificación (UTF-8)
       const textoMensaje = `¡Hola Titan Impress! Vengo de la web y quiero pedir presupuesto para un proyecto.\n\n` +
                            `*Tipo:* Figura ${tipo}\n` +
                            `*Tamaño:* ${tamano}\n` +

@@ -16,6 +16,21 @@ const CARPETA = "imagenes/";
 const FIGURAS = [
   { slug:"kid-buu", name:"Kid Buu", height:147, scale:"147 cm de altura", badge:"Top ventas", fotos: 5,
     desc:"El Majin más salvaje en su forma pura, con todo su dinamismo capturado al milímetro en PLA. Un formato imponente pintado a mano que domina cualquier set." },
+    
+  // --- AQUÍ ESTÁ EL CAMBIO SOLO PARA LA PANTERA ---
+  { slug:"LAPANTERA", name:"La Pantera", height:15, scale:"15 cm de altura", badge:"Top ventas", fotos: 4,
+    acabado: "Impresión multicolor PLA", 
+    desc:"La esencia del trap canario llevada al 3D con un nivel de detalle brutal. Impreso en alta calidad para los coleccionistas más fieles del género." },
+    
+  // --- AQUÍ ESTÁ EL CAMBIO SOLO PARA LUCHO RK ---
+  { slug:"LUCHORK", name:"Lucho RK", height:15, scale:"15 cm de altura", badge:"Top ventas", fotos: 4,
+    acabado: "Impresión multicolor PLA",
+    desc:"Pieza de colección exclusiva de Lucho RK. Diseñada con precisión, impresa en PLA para destacar en cualquier estantería." },
+
+    { slug:"PERRO", name:"MESSI (TÁ FACIL)", height:15, scale:"15 cm de altura", badge:"Top ventas", fotos: 4,
+    acabado: "Impresión multicolor PLA",
+    desc:"Pieza de colección exclusiva de Messi, el perro de la portada TÁ FACIL de Lucho RK y La Pantera . Diseñada con precisión, impresa en PLA para destacar en cualquier estantería." },
+    
   { slug:"goku-kid", name:"Goku Kid", height:125, scale:"125 cm de altura", badge:"", fotos: 3,
     desc:"El pequeño Goku de los orígenes sobre su nube Kintoun. Pura nostalgia de Dragon Ball clásico con acabados premium para coleccionistas exigentes." },
   { slug:"vegeta-kid", name:"Vegeta Kid", height:80, scale:"80 cm de altura", badge:"", fotos: 3,

@@ -16,6 +16,10 @@ const CARPETA = "imagenes/";
 const FIGURAS = [
   { slug:"kid-buu", name:"Kid Buu", height:147, scale:"147 cm tall", badge:"Best Seller", fotos: 5,
     desc:"The wildest Majin in his pure form, with all his dynamism captured to the millimeter in PLA. An imposing hand-painted format that dominates any setup." },
+    { slug:"La-Pantera", name:"La Pantera", height:15, scale:"15 cm tall", badge:"Best Seller", fotos: 5,
+    desc:"The wildest Majin in his pure form, with all his dynamism captured to the millimeter in PLA. An imposing hand-painted format that dominates any setup." },
+    { slug:"LuchoRK", name:"Lucho RK", height:15, scale:"15 cm tall", badge:"Best Seller", fotos: 5,
+    desc:"The wildest Majin in his pure form, with all his dynamism captured to the millimeter in PLA. An imposing hand-painted format that dominates any setup." },
   { slug:"goku-kid", name:"Goku Kid", height:125, scale:"125 cm tall", badge:"", fotos: 3,
     desc:"Young Goku from the origins on his Flying Nimbus (Kintoun). Pure classic Dragon Ball nostalgia with premium finishes for demanding collectors." },
   { slug:"vegeta-kid", name:"Vegeta Kid", height:80, scale:"80 cm tall", badge:"", fotos: 3,

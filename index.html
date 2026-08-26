@@ -43,6 +43,18 @@
 
 <link rel="stylesheet" href="css/styles.css">
 <script defer src="/_vercel/insights/script.js"></script>
+<script>
+  // Detecta el idioma antes de que cargue la página
+  document.addEventListener("DOMContentLoaded", function() {
+    // Mira el idioma del móvil o PC del usuario
+    var userLang = navigator.language || navigator.userLanguage;
+    
+    // Si NO es español, lo manda directamente a la versión en inglés
+    if (!userLang.startsWith('es')) {
+      window.location.replace("indexEN.html"); 
+    }
+  });
+</script>
 </head>
 
 <body class="halftone">
